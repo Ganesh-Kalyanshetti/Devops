@@ -1,0 +1,30 @@
+pipeline
+{
+    agent any
+
+     triggers {
+        
+        githubPush()
+    }
+    stages
+    {
+        stage('link')
+        {
+            steps
+            {
+
+                git branch:"main" ,url: "https://github.com/Ganesh-Kalyanshetti/Devops.git"
+            }
+
+        }
+        stage('run')
+        {
+            steps
+            {
+                sh 'python3 hello.py'
+            }
+        }
+
+    }
+    
+}
